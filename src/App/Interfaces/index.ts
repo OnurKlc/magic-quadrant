@@ -1,3 +1,3 @@
-import { DataModel, IDispatch, IContext, IButtonProps } from "./Interfaces";
+import { DataModel, IDispatch, IContext, IButtonProps, IPointProps } from "./Interfaces";
 
-export type { DataModel, IDispatch, IContext, IButtonProps }
+export type { DataModel, IDispatch, IContext, IButtonProps, IPointProps }

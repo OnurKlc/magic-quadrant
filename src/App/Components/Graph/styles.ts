@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { IPointProps } from "../../Interfaces";
 
 interface AreaLabelProps {
     order: number;
@@ -42,10 +43,16 @@ export const AreaLabel = styled.div<AreaLabelProps>`
 `
 
 export const PointWrapper = styled.div`
-  position: relative;
+  position: absolute;
   width: 25px;
   height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 2;
+  left: ${(props: IPointProps) => 50 + (props.x / 2)}%;
+  bottom: ${(props: IPointProps) => 50 + (props.y / 2)}%;
+  transform: translate(-50%, 50%);
 `
 
 export const Point = styled.div`
@@ -59,6 +66,6 @@ export const Label = styled.div`
   font-size: 13px;
   color: ${props => props.theme.DARK_BLUE};
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: -8px;
+  bottom: -8px;
 `

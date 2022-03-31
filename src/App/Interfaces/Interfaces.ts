@@ -20,3 +20,8 @@ export interface IContext {
 export interface IButtonProps extends React.HTMLAttributes<HTMLElement> {
     text: string
 }
+
+export interface IPointProps {
+    x: number,
+    y: number
+}

@@ -22,15 +22,19 @@ const labels = [
 ]
 
 export default function Graph() {
+    const { data } = useContext(Context)
+
     return (
         <GraphWrapper>
             {labels.map(label => <AreaLabel key={label.order} order={label.order}>{label.text}</AreaLabel>)}
-            <XAxis/>
-            <YAxis/>
-            <PointWrapper>
-                <Point/>
-                <Label>3</Label>
-            </PointWrapper>
+            <XAxis />
+            <YAxis />
+            {data.map(point => (
+                <PointWrapper key={point.id} x={point.x} y={point.y}>
+                    <Point />
+                    <Label>{point.label}</Label>
+                </PointWrapper>
+            ))}
         </GraphWrapper>
     )
 }
