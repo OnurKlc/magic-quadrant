@@ -1,4 +1,5 @@
 import React from 'react';
+import { ContextProvider } from './Context'
 import { Graph, Table } from "./Components";
 import { theme } from './Styles';
 import { ThemeProvider } from "styled-components";
@@ -7,8 +8,10 @@ function App() {
     return (
         <div id="app">
             <ThemeProvider theme={theme}>
-                <Graph/>
-                <Table/>
+                <ContextProvider>
+                    <Graph />
+                    <Table />
+                </ContextProvider>
             </ThemeProvider>
         </div>
     );

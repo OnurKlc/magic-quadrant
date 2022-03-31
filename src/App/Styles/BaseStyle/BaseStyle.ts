@@ -27,6 +27,16 @@ export const BaseStyle = createGlobalStyle`
     monospace;
   }
   
+  #app {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    
+    & > div {
+      margin: 0 20px;
+    }
+  }
+  
   button {
     cursor: pointer;
   }
