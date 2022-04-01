@@ -53,6 +53,7 @@ export const PointWrapper = styled.div`
   left: ${(props: IPointProps) => 50 + (props.x / 2)}%;
   bottom: ${(props: IPointProps) => 50 + (props.y / 2)}%;
   transform: translate(-50%, 50%);
+  cursor: move;
 `
 
 export const Point = styled.div`
@@ -68,4 +69,8 @@ export const Label = styled.div`
   position: absolute;
   right: -8px;
   bottom: -8px;
+  max-width: 60px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `
