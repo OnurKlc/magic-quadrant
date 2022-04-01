@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { TableHeader, TableRow } from "./styles";
-import { ADD_TO_LIST, Context, REMOVE_FROM_LIST } from "../../Context";
+import { ADD_TO_LIST, Context, REMOVE_FROM_LIST } from "../../Core/Context";
 import Button from "../Button";
-import { DataModel } from "../../Interfaces";
+import { DataModel } from "../../Core/Interfaces";
 
 export default function Table() {
     const { data, dispatch } = useContext(Context)
@@ -32,7 +32,7 @@ export default function Table() {
 
     const onAddClick = () => {
         const newItem: DataModel = {
-            label: '',
+            label: 'New',
             x: 0,
             y: 0,
             id: Math.random().toString(16).slice(2)

@@ -3,7 +3,7 @@ import { DataModel } from "../Interfaces";
 
 if (!sessionStorage.getItem('data')) {
     sessionStorage.setItem('data', JSON.stringify([{
-        label: '',
+        label: 'New',
         x: 0,
         y: 0,
         id: Math.random().toString(16).slice(2)

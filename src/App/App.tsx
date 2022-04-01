@@ -1,7 +1,7 @@
 import React from 'react';
-import { ContextProvider } from './Context'
+import { ContextProvider } from './Core/Context'
 import { Graph, Table } from "./Components";
-import { theme } from './Styles';
+import { theme } from './Assets/Styles';
 import { ThemeProvider } from "styled-components";
 
 function App() {

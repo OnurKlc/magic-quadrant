@@ -23,5 +23,6 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLElement> {
 
 export interface IPointProps {
     x: number,
-    y: number
+    y: number,
+    withCircle: boolean
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { IPointProps } from "../../Interfaces";
+import { IPointProps } from "../../Core/Interfaces";
 
 interface AreaLabelProps {
     order: number;
@@ -42,18 +42,25 @@ export const AreaLabel = styled.div<AreaLabelProps>`
   border-radius: 5px;
 `
 
-export const PointWrapper = styled.div`
+export const PointWrapper = styled.div.attrs<IPointProps>((props) => ({
+    style: {
+        left: `${(50 + (props.x / 2))}%`,
+        bottom: `${(50 + (props.y / 2))}%`,
+        border: props.withCircle && '2px solid black',
+        borderRadius: props.withCircle && '50%'
+    }
+}))<IPointProps>`
   position: absolute;
+  box-sizing: content-box;
   width: 25px;
   height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
-  left: ${(props: IPointProps) => 50 + (props.x / 2)}%;
-  bottom: ${(props: IPointProps) => 50 + (props.y / 2)}%;
   transform: translate(-50%, 50%);
   cursor: move;
+  padding: 5px;
 `
 
 export const Point = styled.div`

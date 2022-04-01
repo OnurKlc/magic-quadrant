@@ -1,5 +1,5 @@
 import { ButtonWrapper } from "./styles";
-import { IButtonProps } from "../../Interfaces";
+import { IButtonProps } from "../../Core/Interfaces";
 
 export default function Button({ text, ...props }: IButtonProps) {
 
