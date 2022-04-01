@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TableHeader, TableRow } from "./styles";
+import { TableWrapper, TableHeader, TableRow } from "./styles";
 import { ADD_TO_LIST, Context, REMOVE_FROM_LIST } from "../../Core/Context";
 import Button from "../Button";
 import { DataModel } from "../../Core/Interfaces";
@@ -58,7 +58,7 @@ export default function Table() {
     }
 
     return (
-        <div>
+        <TableWrapper>
             <Button text={'Add'} onClick={onAddClick} />
             <TableHeader>
                 <div>Label</div>
@@ -96,6 +96,6 @@ export default function Table() {
                     <Button text={'Delete'} onClick={() => onDeleteClick(item)} />
                 </TableRow>
             ))}
-        </div>
+        </TableWrapper>
     )
 }

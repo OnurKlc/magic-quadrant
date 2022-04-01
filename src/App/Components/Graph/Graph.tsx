@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { ADD_TO_LIST, Context } from "../../Core/Context";
-import { XAxis, YAxis, GraphWrapper, AreaLabel, Point, Label, PointWrapper } from "./styles";
+import { GraphWrapper, AreaLabel, XAxis, YAxis, VisionText, ExecuteText, Point, Label, PointWrapper } from "./styles";
 
 const labels = [
     {
@@ -58,9 +58,11 @@ export default function Graph() {
             ref={graph}
             onDragOver={(e) => e.preventDefault()}
         >
-            {labels.map(label => <AreaLabel key={label.order} order={label.order}>{label.text}</AreaLabel>)}
             <XAxis />
             <YAxis />
+            <VisionText>Completeness of vision &rarr;</VisionText>
+            <ExecuteText>Ability to execute &rarr;</ExecuteText>
+            {labels.map(label => <AreaLabel key={label.order} order={label.order}>{label.text}</AreaLabel>)}
             {data.map(point => (
                 <PointWrapper
                     key={point.id}

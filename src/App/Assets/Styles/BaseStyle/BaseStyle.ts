@@ -1,10 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const BaseStyle = createGlobalStyle`
-  :root {
-    --view-height: 100vh;
-  }
-
   html {
     -webkit-text-size-adjust: 100%;
   }
@@ -29,12 +25,9 @@ export const BaseStyle = createGlobalStyle`
   
   #app {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 120px;
-    
-    & > div {
-      margin: 0 20px;
-    }
   }
   
   button {

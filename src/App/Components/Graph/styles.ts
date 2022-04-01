@@ -8,8 +8,10 @@ interface AreaLabelProps {
 export const GraphWrapper = styled.div`
   width: 400px;
   height: 400px;
+  min-width: 400px;
   border: 2px solid ${props => props.theme.DARK_GREY};
   position: relative;
+  margin: 0 20px 50px;
 `
 
 export const XAxis = styled.div`
@@ -40,6 +42,19 @@ export const AreaLabel = styled.div<AreaLabelProps>`
   color: ${props => props.theme.WHITE};
   padding: 2px 10px;
   border-radius: 5px;
+`
+
+export const VisionText = styled.p`
+  position: absolute;
+  bottom: -40px;
+`
+
+export const ExecuteText = styled.p`
+  transform: rotate(270deg);
+  transform-origin: 0 0;
+  position: absolute;
+  bottom: -30px;
+  left: -25px;
 `
 
 export const PointWrapper = styled.div.attrs<IPointProps>((props) => ({

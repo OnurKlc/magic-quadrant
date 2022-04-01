@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const TableWrapper = styled.div`
+  margin: 0 20px;
+`
+
 export const TableHeader = styled.div`
   display: flex;
   margin-top: 10px;
