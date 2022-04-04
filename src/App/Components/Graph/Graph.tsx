@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef } from "react";
 import { ADD_TO_LIST, Context } from "../../Core/Context";
 import { GraphWrapper, AreaLabel, XAxis, YAxis, VisionText, ExecuteText, Point, Label, PointWrapper } from "./styles";
 
@@ -24,10 +24,11 @@ const labels = [
 export default function Graph() {
     const { data, dispatch } = useContext(Context)
     const graph = useRef<HTMLDivElement>(null)
-    const [dragging, setDragging] = useState(false)
 
-    const onDragStart = (e: React.DragEvent<HTMLDivElement>) => {
-        setDragging(true)
+    const onDragStart = (e: React.DragEvent<HTMLDivElement>, id: string) => {
+        let item = data.find(item => item.id === id)!
+        item.withCircle = true
+        dispatch({type: ADD_TO_LIST, item })
         e.stopPropagation()
         let pic = new Image()
         pic.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" //transparent gif, resolves issue with Safari that otherwise does not allow dragging
@@ -37,7 +38,9 @@ export default function Graph() {
 
     const onDrag = (event: React.DragEvent<HTMLDivElement>, id: string) => {
         if (event.clientX === 0 || event.clientY === 0) {
-            setDragging(false)
+            let item = data.find(item => item.id === id)!
+            item.withCircle = false
+            dispatch({type: ADD_TO_LIST, item })
             return
         }
 
@@ -50,6 +53,12 @@ export default function Graph() {
         let newYPosition = Math.ceil(-(((event.clientY - 120) / 2) - 100))
         item.x = newXPosition > 100 ? 100 : newXPosition < -100 ? -100 : newXPosition
         item.y = newYPosition > 100 ? 100 : newYPosition < -100 ? -100 : newYPosition
+        dispatch({type: ADD_TO_LIST, item })
+    }
+
+    const onDragEnd = (id: string) => {
+        let item = data.find(item => item.id === id)!
+        item.withCircle = false
         dispatch({type: ADD_TO_LIST, item })
     }
 
@@ -68,11 +77,11 @@ export default function Graph() {
                     key={point.id}
                     x={point.x}
                     y={point.y}
-                    withCircle={dragging}
+                    withCircle={point.withCircle}
                     draggable
-                    onDragStart={onDragStart}
+                    onDragStart={(e) => onDragStart(e, point.id)}
                     onDrag={(event) => onDrag(event, point.id)}
-                    onDragEnd={() => setDragging(false)}
+                    onDragEnd={() => onDragEnd(point.id)}
                 >
                     <Point />
                     <Label>{point.label}</Label>

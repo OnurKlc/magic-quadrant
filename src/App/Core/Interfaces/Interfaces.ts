@@ -1,6 +1,7 @@
 import React from "react";
 
 export interface DataModel {
+    withCircle: boolean;
     label: string,
     x: number,
     y: number,

@@ -35,6 +35,7 @@ export default function Table() {
             label: 'New',
             x: 0,
             y: 0,
+            withCircle: false,
             id: Math.random().toString(16).slice(2)
         }
         dispatch({ type: ADD_TO_LIST, item: newItem })

@@ -6,6 +6,7 @@ if (!sessionStorage.getItem('data')) {
         label: 'New',
         x: 0,
         y: 0,
+        withCircle: false,
         id: Math.random().toString(16).slice(2)
     }]))
 }
