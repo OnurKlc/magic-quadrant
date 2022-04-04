@@ -20,24 +20,40 @@ export const Context = createContext<{
     dispatch: () => null
 })
 
-export const ADD_TO_LIST = 'addToList'
-export const REMOVE_FROM_LIST = 'removeFromList'
+export const ACTION_TYPES = {
+    ADD_TO_LIST: 'addToList',
+    REMOVE_FROM_LIST: 'removeFromList',
+    ADD_BORDER_TO_POINT: 'addBorder',
+    REMOVE_BORDER_FROM_POINT: 'removeBorder',
+    CHANGE_ITEM: 'changePosition'
+}
 
-function reducer(state: DataModel[], action: { type: string; item: DataModel }) {
+function reducer(state: DataModel[], action: { type: string; payload: any }) {
     switch (action.type) {
-        case ADD_TO_LIST:
-            const index = state.findIndex((el) => el.id === action.item.id)
-            if (index < 0) {
-                sessionStorage.setItem('data', JSON.stringify([...state, action.item]))
-                return [...state, action.item]
-            } else {
-                sessionStorage.setItem('data', JSON.stringify([...state]))
-                return [...state]
-            }
-        case REMOVE_FROM_LIST: {
-            const index = state.findIndex((el) => el.id === action.item.id)
+        case ACTION_TYPES.ADD_TO_LIST:
+            sessionStorage.setItem('data', JSON.stringify([...state, action.payload.item]))
+            return [...state, action.payload.item]
+        case ACTION_TYPES.REMOVE_FROM_LIST: {
+            const index = state.findIndex((el) => el.id === action.payload)
             if (index > -1) state.splice(index, 1)
             sessionStorage.setItem('data', JSON.stringify(state))
+            return [...state]
+        }
+        case ACTION_TYPES.ADD_BORDER_TO_POINT: {
+            const item = state.find((el) => el.id === action.payload)!
+            item.withCircle = true
+            sessionStorage.setItem('data', JSON.stringify([...state]))
+            return [...state]
+        }
+        case ACTION_TYPES.REMOVE_BORDER_FROM_POINT: {
+            const item = state.find((el) => el.id === action.payload)!
+            item.withCircle = false
+            sessionStorage.setItem('data', JSON.stringify([...state]))
+            return [...state]
+        }
+        case ACTION_TYPES.CHANGE_ITEM: {
+            const item = state.find((el) => el.id === action.payload.id)!
+            Object.assign(item, action.payload)
             return [...state]
         }
         default:

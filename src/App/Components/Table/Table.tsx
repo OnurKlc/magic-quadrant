@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { TableWrapper, TableHeader, TableRow } from "./styles";
-import { ADD_TO_LIST, Context, REMOVE_FROM_LIST } from "../../Core/Context";
+import { Context, ACTION_TYPES } from "../../Core/Context";
 import Button from "../Button";
 import { DataModel } from "../../Core/Interfaces";
 
@@ -31,18 +31,18 @@ export default function Table() {
     }
 
     const onAddClick = () => {
-        const newItem: DataModel = {
+        const item: DataModel = {
             label: 'New',
             x: 0,
             y: 0,
             withCircle: false,
             id: Math.random().toString(16).slice(2)
         }
-        dispatch({ type: ADD_TO_LIST, item: newItem })
+        dispatch({ type: ACTION_TYPES.ADD_TO_LIST, payload: item })
     }
 
-    const onDeleteClick = (item: DataModel) => {
-        dispatch({ type: REMOVE_FROM_LIST, item })
+    const onDeleteClick = (id: string) => {
+        dispatch({ type: ACTION_TYPES.REMOVE_FROM_LIST, payload: id })
     }
 
     const onInputChange = (value: string | number, key: string, id: string) => {
@@ -53,9 +53,7 @@ export default function Table() {
                 value = -100
             }
         }
-        const changingItem: any = data.find((item: DataModel) => item.id === id)!
-        changingItem[key] = value
-        dispatch({ type: ADD_TO_LIST, item: changingItem })
+        dispatch({ type: ACTION_TYPES.CHANGE_ITEM, payload: {id, [key]: value} })
     }
 
     return (
@@ -94,7 +92,7 @@ export default function Table() {
                         value={item.y}
                         onChange={(e) => onInputChange(e.target.value, "y", item.id)}
                     />
-                    <Button text={'Delete'} onClick={() => onDeleteClick(item)} />
+                    <Button text={'Delete'} onClick={() => onDeleteClick(item.id)} />
                 </TableRow>
             ))}
         </TableWrapper>

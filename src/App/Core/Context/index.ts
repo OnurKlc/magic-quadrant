@@ -1,3 +1,3 @@
-import { Context, ContextProvider, REMOVE_FROM_LIST, ADD_TO_LIST } from "./Context"
+import { Context, ContextProvider, ACTION_TYPES } from "./Context"
 
-export { Context, ContextProvider, REMOVE_FROM_LIST, ADD_TO_LIST }
+export { Context, ContextProvider, ACTION_TYPES }
