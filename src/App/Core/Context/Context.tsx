@@ -2,13 +2,14 @@ import React, { createContext, useReducer, Dispatch } from 'react'
 import { DataModel } from "../Interfaces";
 
 if (!sessionStorage.getItem('data')) {
-    sessionStorage.setItem('data', JSON.stringify([{
+    const initialObject: DataModel = {
         label: 'New',
         x: 0,
         y: 0,
         withCircle: false,
         id: Math.random().toString(16).slice(2)
-    }]))
+    }
+    sessionStorage.setItem('data', JSON.stringify([initialObject]))
 }
 const initialState = JSON.parse(sessionStorage.getItem('data')!)
 
