@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { IPointProps } from "../../Core/Interfaces";
+import { IDashProps, IPointProps } from "../../Core/Interfaces";
 
 interface AreaLabelProps {
     order: number;
@@ -84,6 +84,32 @@ export const Point = styled.div`
   height: 15px;
   border-radius: 50%;
   background: ${props => props.theme.DARK_BLUE};
+`
+
+export const HorizontalDash = styled.div.attrs<IDashProps>((props) => ({
+    style: {
+        left: `${(50 + (props.x / 2))}%`,
+        bottom: `${(50 + (props.y / 2))}%`,
+        width: `${(50 + (props.x / 2))}%`,
+        border: '1px dashed red'
+    }
+}))<IDashProps>`
+  height: 0;
+  position: absolute;
+  transform: translateX(-100%);
+`
+
+export const VerticalDash = styled.div.attrs<IDashProps>((props) => ({
+    style: {
+        left: `${(50 + (props.x / 2))}%`,
+        bottom: `${(50 + (props.y / 2))}%`,
+        height: `${(50 + (props.y / 2))}%`,
+        border: '1px dashed red'
+    }
+}))<IDashProps>`
+  width: 0;
+  position: absolute;
+  transform: translateY(100%);
 `
 
 export const Label = styled.div`

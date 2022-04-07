@@ -29,3 +29,8 @@ export interface IPointProps {
     withCircle: boolean,
     checked: boolean
 }
+
+export interface IDashProps {
+    x: number,
+    y: number
+}
