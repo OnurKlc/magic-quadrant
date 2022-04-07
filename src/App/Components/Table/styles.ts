@@ -29,6 +29,7 @@ export const TableHeader = styled.div`
 
 export const TableRow = styled.div`
   display: flex;
+  align-items: center;
   margin-top: 10px;
 
   & > * {
@@ -39,8 +40,12 @@ export const TableRow = styled.div`
   }
 
   & > input:first-of-type {
-    width: 200px;
     margin-left: 0;
+    width: unset;
+  }
+
+  & > input:nth-of-type(2) {
+    width: 200px;
   }
 
   button {

@@ -62,7 +62,8 @@ export const PointWrapper = styled.div.attrs<IPointProps>((props) => ({
         left: `${(50 + (props.x / 2))}%`,
         bottom: `${(50 + (props.y / 2))}%`,
         border: props.withCircle && '2px solid black',
-        borderRadius: props.withCircle && '50%'
+        borderRadius: props.withCircle && '50%',
+        opacity: !props.checked && 0.5
     }
 }))<IPointProps>`
   position: absolute;

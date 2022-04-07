@@ -5,7 +5,8 @@ export interface DataModel {
     label: string,
     x: number,
     y: number,
-    id: string
+    id: string,
+    checked: boolean
 }
 
 export interface IDispatch {
@@ -25,5 +26,6 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLElement> {
 export interface IPointProps {
     x: number,
     y: number,
-    withCircle: boolean
+    withCircle: boolean,
+    checked: boolean
 }

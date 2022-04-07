@@ -36,7 +36,8 @@ export default function Table() {
             x: 0,
             y: 0,
             withCircle: false,
-            id: Math.random().toString(16).slice(2)
+            id: Math.random().toString(16).slice(2),
+            checked: true
         }
         dispatch({ type: ACTION_TYPES.ADD_TO_LIST, payload: item })
     }
@@ -45,7 +46,7 @@ export default function Table() {
         dispatch({ type: ACTION_TYPES.REMOVE_FROM_LIST, payload: id })
     }
 
-    const onInputChange = (value: string | number, key: string, id: string) => {
+    const onInputChange = (value: string | number | boolean, key: string, id: string) => {
         if (key === "x" || key === "y") {
             if (value > 100) {
                 value = 100
@@ -67,6 +68,11 @@ export default function Table() {
             </TableHeader>
             {data.map((item: DataModel) => (
                 <TableRow key={item.id}>
+                    <input
+                        type="checkbox"
+                        checked={item.checked}
+                        onChange={(e) => onInputChange(e.target.checked, "checked", item.id)}
+                    />
                     <input
                         type="text"
                         value={item.label}

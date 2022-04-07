@@ -71,6 +71,7 @@ export default function Graph() {
                     x={point.x}
                     y={point.y}
                     withCircle={point.withCircle}
+                    checked={point.checked}
                     draggable
                     onDragStart={(e) => onDragStart(e, point.id)}
                     onDrag={(event) => onDrag(event, point.id)}

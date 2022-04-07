@@ -7,7 +7,8 @@ if (!sessionStorage.getItem('data')) {
         x: 0,
         y: 0,
         withCircle: false,
-        id: Math.random().toString(16).slice(2)
+        id: Math.random().toString(16).slice(2),
+        checked: true
     }
     sessionStorage.setItem('data', JSON.stringify([initialObject]))
 }
@@ -32,8 +33,8 @@ export const ACTION_TYPES = {
 function reducer(state: DataModel[], action: { type: string; payload: any }) {
     switch (action.type) {
         case ACTION_TYPES.ADD_TO_LIST:
-            sessionStorage.setItem('data', JSON.stringify([...state, action.payload.item]))
-            return [...state, action.payload.item]
+            sessionStorage.setItem('data', JSON.stringify([...state, action.payload]))
+            return [...state, action.payload]
         case ACTION_TYPES.REMOVE_FROM_LIST: {
             const index = state.findIndex((el) => el.id === action.payload)
             if (index > -1) state.splice(index, 1)
